@@ -11,4 +11,5 @@ https://github.com/UBakaliya/Currency-Exchanger.git
 
 OR
 
+[Download](https://github.com/UBakaliya/Currency-Exchanger/archive/refs/heads/main.zip)
 

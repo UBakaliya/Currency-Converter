@@ -5,7 +5,7 @@
  * API Used: "https://cdn.moneyconvert.net/api/latest.json"
  */
 
-package com.example.Currency_Exchanger;
+package com.example.currency_exchanger;
 
 
 import java.io.BufferedReader;
@@ -15,8 +15,8 @@ import java.net.URL;
 
 
 public class FetchCurrencyRatesAPI {
+    private int respCode;
 
-    // JSONParser parse = new JSONParser;
     // Given the api it will return the format the api is in:
     public String fetchAPI(String API_URL) {
         try {
@@ -26,17 +26,19 @@ public class FetchCurrencyRatesAPI {
             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String inputLine;
             StringBuilder response = new StringBuilder();
+
             // get all the data from the api
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
             in.close();
 
-            // if the api data is successful retrieve then:
             return response.toString();
+
         } catch (Exception e) {
-            System.out.println("ERROR. Loading API;");
+            e.printStackTrace();
         }
-        return "200";
+        // If something goes wrong getting the api data then:
+        return "Unsuccessful. !200.";
     }
 }

@@ -1,26 +1,32 @@
-package com.example.Currency_Exchanger;
+package com.example.currency_exchanger;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class ImplementAPIData implements APIData {
-    // Get all the data from the api:
+public class ManipulateAPIData implements ManipulateAPIDataInterface {
     private String resp;
     private HashMap<String, Double> apiData;
 
-    // Get all the data and assign it to response
-    ImplementAPIData() {
-        FetchCurrencyRatesAPI fetchAPI = new FetchCurrencyRatesAPI();
-        String API_URL = "https://cdn.moneyconvert.net/api/latest.json";
+    /**
+     * Get all the data and assign it to response
+     */
+    ManipulateAPIData(final String API_URL) {
 
-        this.resp = fetchAPI.fetchAPI(API_URL);
+        /*
+         * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
+         * @api: "https://cdn.moneyconvert.net/api/latest.json" ( API USED FOR THE PROGRAM) *
+         * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
+         */
+
+        FetchCurrencyRatesAPI fetchAPI = new FetchCurrencyRatesAPI();
+        this.resp = fetchAPI.fetchAPI(API_URL); // Get the api data
         // Build the map cleaning the response
         this.buildAPIDataMap();
     }
 
-    // Build the map that will have the currency as the key of the map and the value as the rate
-    // i.e. USD --> 1
+    /**
+     * Build the map that will have the currency as the key of the map and the value as the rate
+     * i.e. USD --> 1
+     */
     private void buildAPIDataMap() {
         // Trim the api response and only get the useful information
         this.resp = this.resp.substring(30, this.resp.length() - 52);
@@ -29,22 +35,24 @@ public class ImplementAPIData implements APIData {
         this.apiData = new HashMap<>();
 
         // Trim the unnecessary information and build the map
-        for (String i : splitData) {
+        for (final String i : splitData) {
             String currency = i.substring(0, i.indexOf(":")).replaceAll("\\s", "").replaceAll("\"", "");
             double rate = Double.parseDouble(i.substring(i.indexOf(":") + 1));
             this.apiData.put(currency, rate);
         }
     }
 
+    // Useful for testing
+    public int apiDataMapSize() {
+        return this.apiData.size();
+    }
 
     /**
      * @return current date
      */
     @Override
     public String getCurrentDate() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
+        return String.valueOf(java.time.LocalDate.now());
     }
 
     /**
@@ -52,8 +60,8 @@ public class ImplementAPIData implements APIData {
      * user can use from
      */
     @Override
-    public Set<String> getAllCurrenciesNames() {
-        return this.apiData.keySet();
+    public SortedSet<Object> getAllCurrenciesNames() {
+        return new TreeSet<>(this.apiData.keySet());
     }
 
     /**
@@ -75,7 +83,7 @@ public class ImplementAPIData implements APIData {
     public String getCurrenciesNamesWithRates() {
         StringBuilder currenciesWithRates = new StringBuilder();
         Set<String> keys = this.apiData.keySet();
-        for (String i : keys) {
+        for (final String i : keys) {
             currenciesWithRates.append(i).append(" ").append(this.apiData.get(i)).append("\n");
         }
         return currenciesWithRates.toString();

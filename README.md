@@ -8,7 +8,7 @@
 
 - It's important to note that the program does not have the ability to transfer money directly, but it provides users with the information they need to make informed decisions about money transfers.
 
-- Overall, the program is a powerful and user-friendly tool for anyone who needs to convert currencies or find resources for money transfers, and I am confident it will make your financial transactions smoother and more efficient.
+- Overall, the program is a powerful and user-friendly tool for anyone who needs to convert currencies or find resources for money transfers, and I'm confident it will make your financial transactions smoother and more efficient.
 ---
 
 To clone get the app you can clone:

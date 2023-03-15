@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AppTests {
-    final ManipulateAPIData API_DATA_TEST = new ManipulateAPIData("https://cdn.moneyconvert.net/api/latest.json");
+    final ManipulateAPIData API_DATA_TEST = new ManipulateAPIData();
 
     @Test
     void apiDataMapSizeTest() {
@@ -67,10 +67,12 @@ class AppTests {
 
     @Test
     void getRateForGivenCurrencyTest() {
+
     }
 
     @Test
     void getCurrenciesNamesWithRatesTest() {
+
     }
 
 }

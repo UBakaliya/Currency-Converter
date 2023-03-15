@@ -9,14 +9,14 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
     /**
      * Get all the data and assign it to response
      */
-    ManipulateAPIData(final String API_URL) {
-
+    ManipulateAPIData() {
         /*
          * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
          * @api: "https://cdn.moneyconvert.net/api/latest.json" ( API USED FOR THE PROGRAM) *
          * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
          */
 
+        final String API_URL = "https://cdn.moneyconvert.net/api/latest.json";
         FetchCurrencyRatesAPI fetchAPI = new FetchCurrencyRatesAPI();
         this.resp = fetchAPI.fetchAPI(API_URL); // Get the api data
         // Build the map cleaning the response
@@ -88,4 +88,12 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
         }
         return currenciesWithRates.toString();
     }
+
+    @Override
+    public double calculateRates(String currency1, String currency2) {
+        if (!this.apiData.containsKey(currency1) && (!this.apiData.containsKey(currency2)))
+            return -1;
+        return this.apiData.get(currency1) * this.apiData.get(currency2);
+    }
+
 }

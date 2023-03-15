@@ -19,4 +19,8 @@ public interface ManipulateAPIDataInterface {
 
     // This will return 'all' the currencies with their rates
     public String getCurrenciesNamesWithRates();
+
+    // This function will return the conversion of the currencies
+    public double calculateRates(String currency1, String currency2);
+
 }

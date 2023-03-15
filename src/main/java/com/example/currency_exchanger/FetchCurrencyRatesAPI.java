@@ -7,7 +7,6 @@
 
 package com.example.currency_exchanger;
 
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -15,7 +14,6 @@ import java.net.URL;
 
 
 public class FetchCurrencyRatesAPI {
-    private int respCode;
 
     // Given the api it will return the format the api is in:
     public String fetchAPI(String API_URL) {
@@ -39,6 +37,6 @@ public class FetchCurrencyRatesAPI {
             e.printStackTrace();
         }
         // If something goes wrong getting the api data then:
-        return "Unsuccessful. !200.";
+        return "Unsuccessful Fetching API";
     }
 }

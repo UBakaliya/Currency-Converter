@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="Currency-Exchanger" options="--add-exports javafx.controls/com.sun.javafx.charts=com.example.demo" />
+      <module name="Currency-Exchanger" options="" />
     </option>
   </component>
 </project>

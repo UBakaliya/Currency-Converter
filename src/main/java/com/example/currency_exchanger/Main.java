@@ -6,13 +6,18 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
+    @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader root = new FXMLLoader(getClass().getResource("currency-exchanger-view.fxml"));
-        stage.setTitle("Currency Exchanger");
-        stage.getIcons().add(new Image("file:icon.png"));
-        stage.setScene(new Scene(root.load()));
+        stage.setTitle("Currency Converter");
+        Image icon = new Image("file:src/images/icon.png");
+        stage.getIcons().add(icon);
+
+        Scene scene = new Scene(root.load());
+        stage.setScene(scene);
         stage.show();
     }
 
@@ -20,3 +25,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+

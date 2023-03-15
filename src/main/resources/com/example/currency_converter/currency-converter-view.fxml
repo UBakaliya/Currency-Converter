@@ -19,7 +19,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0"
             prefWidth="615.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.currency_exchanger.CurrencyExchangerController">
+            fx:controller="com.example.currency_converter.CurrencyConverterController">
     <center>
         <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 

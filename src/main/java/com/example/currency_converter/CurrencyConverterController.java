@@ -1,25 +1,19 @@
 /**
  * @apiNote This is the application layout filed where all the function is being build from the
- * "currency-exchanger-view.fxml" file.
+ * "currency-converter-view.fxml" file.
  */
-package com.example.currency_exchanger;
+package com.example.currency_converter;
 
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Rectangle;
-import org.controlsfx.control.textfield.TextFields;
 
 import java.util.SortedSet;
 
-public class CurrencyExchangerController {
+public class CurrencyConverterController {
 
     @FXML
     public Button convertBtn;
@@ -41,7 +35,7 @@ public class CurrencyExchangerController {
     private ManipulateAPIData apiDataContainer;
     private final SortedSet<Object> currencies;
 
-    public CurrencyExchangerController() {
+    public CurrencyConverterController() {
         apiDataContainer = new ManipulateAPIData();
         this.currencies = apiDataContainer.getAllCurrenciesNames();
         currenciesEntryAdded = false;

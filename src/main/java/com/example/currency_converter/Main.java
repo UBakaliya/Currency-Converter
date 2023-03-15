@@ -1,4 +1,4 @@
-package com.example.currency_exchanger;
+package com.example.currency_converter;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader root = new FXMLLoader(getClass().getResource("currency-exchanger-view.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("currency-converter-view.fxml"));
         stage.setTitle("Currency Converter");
         Image icon = new Image("file:src/images/icon.png");
         stage.getIcons().add(icon);

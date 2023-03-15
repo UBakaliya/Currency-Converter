@@ -1,4 +1,4 @@
-package com.example.currency_exchanger;
+package com.example.currency_converter;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

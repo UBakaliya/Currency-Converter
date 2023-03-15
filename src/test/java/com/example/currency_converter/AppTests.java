@@ -1,9 +1,8 @@
-package com.example.currency_exchanger;
+package com.example.currency_converter;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

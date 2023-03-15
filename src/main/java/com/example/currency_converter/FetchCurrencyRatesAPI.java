@@ -5,7 +5,7 @@
  * API Used: "https://cdn.moneyconvert.net/api/latest.json"
  */
 
-package com.example.currency_exchanger;
+package com.example.currency_converter;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -21,6 +21,6 @@ public interface ManipulateAPIDataInterface {
     public String getCurrenciesNamesWithRates();
 
     // This function will return the conversion of the currencies
-    public double calculateRates(String currency1, String currency2);
+    public double calculateRates(String amount, String currency1, String currency2);
 
 }

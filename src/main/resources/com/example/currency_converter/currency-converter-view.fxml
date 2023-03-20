@@ -16,181 +16,162 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0"
-            prefWidth="615.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.currency_converter.CurrencyConverterController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="615.0" stylesheets="@lightStyles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.currency_converter.CurrencyConverterController">
     <center>
         <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-
-            <Button fx:id="convertBtn" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false"
-                    onAction="#convertCurrency" prefHeight="35.0" prefWidth="104.0" text="CONVERT"
-                    textAlignment="CENTER">
+            <Button fx:id="convertBtn" contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onAction="#convertCurrency" prefHeight="35.0" prefWidth="104.0" text="CONVERT" textAlignment="CENTER">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
                 <StackPane.margin>
-                    <Insets right="150.0" top="350.0"/>
+                    <Insets right="150.0" top="350.0" />
                 </StackPane.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </Button>
-            <Label prefHeight="50.0" prefWidth="220.0" textAlignment="CENTER">
+            <TextField fx:id="amount1TextArea" maxWidth="220.0" onKeyTyped="#currencyAmountEntry" opacity="0.9" prefHeight="42.0" prefWidth="220.0" promptText="AMOUNT" text="1.00 (USD)">
                 <font>
-                    <Font size="15.0"/>
+                    <Font size="17.0" />
                 </font>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
                 <StackPane.margin>
-                    <Insets left="300.0" top="70.0"/>
+                    <Insets right="300.0" top="50.0" />
                 </StackPane.margin>
-                <graphic>
-                    <TextField fx:id="amount1TextArea">
-                        <font>
-                            <Font size="22.0"/>
-                        </font>
-                    </TextField>
-                </graphic>
-            </Label>
-            <Label prefHeight="40.0" prefWidth="220.0">
-                <graphic>
-                    <TextField fx:id="amount2TextArea" prefHeight="50.0" prefWidth="220.0">
-                        <font>
-                            <Font size="22.0"/>
-                        </font>
-                    </TextField>
-                </graphic>
+            </TextField>
+            <Label id="titleLabel" alignment="CENTER" prefHeight="59.0" prefWidth="386.0" text="CURRENCY CONVERTER" textAlignment="CENTER" textFill="#53586e" underline="true">
                 <StackPane.margin>
-                    <Insets right="300.0" top="70.0"/>
-                </StackPane.margin>
-            </Label>
-            <Label alignment="CENTER" prefHeight="59.0" prefWidth="386.0" text="CURRENCY CONVERTER"
-                   textAlignment="CENTER" textFill="#53586e" underline="true">
-                <StackPane.margin>
-                    <Insets bottom="450.0"/>
+                    <Insets bottom="450.0" />
                 </StackPane.margin>
                 <font>
-                    <Font name="Al Bayan Plain" size="28.0"/>
+                    <Font name="Al Bayan Plain" size="28.0" />
                 </font>
                 <cursor>
-                    <Cursor fx:constant="TEXT"/>
+                    <Cursor fx:constant="TEXT" />
                 </cursor>
             </Label>
-            <Label text="AMOUNT:">
+            <ProgressIndicator fx:id="progressIndicator" prefHeight="40.0" prefWidth="82.0" progress="0.0" visible="false" StackPane.alignment="CENTER">
                 <StackPane.margin>
-                    <Insets right="440.0"/>
-                </StackPane.margin>
-                <font>
-                    <Font name="Arial Black" size="15.0"/>
-                </font>
-                <cursor>
-                    <Cursor fx:constant="TEXT"/>
-                </cursor>
-            </Label>
-            <ProgressIndicator fx:id="progressIndicator" prefHeight="40.0" prefWidth="82.0" progress="0.0"
-                               visible="false" StackPane.alignment="CENTER">
-                <StackPane.margin>
-                    <Insets bottom="110.0"/>
+                    <Insets bottom="110.0" />
                 </StackPane.margin>
             </ProgressIndicator>
-            <Label prefHeight="23.0" prefWidth="59.0" text="FROM:" textAlignment="CENTER">
+            <Label id="amountLabel" prefHeight="23.0" prefWidth="57.0" text="FROM:" textAlignment="CENTER">
                 <StackPane.margin>
-                    <Insets bottom="270.0" right="450.0"/>
+                    <Insets bottom="270.0" right="450.0" />
                 </StackPane.margin>
                 <font>
-                    <Font name="Arial Black" size="15.0"/>
+                    <Font name="Arial Black" size="15.0" />
                 </font>
                 <cursor>
-                    <Cursor fx:constant="TEXT"/>
+                    <Cursor fx:constant="TEXT" />
                 </cursor>
             </Label>
-            <ComboBox fx:id="currencyEntry1" editable="true" onShown="#fillBoxes" prefHeight="40.0" prefWidth="220.0"
-                      promptText="--SELECT--">
+            <ComboBox fx:id="currencyEntry1" editable="true" onMouseClicked="#fillBoxes" prefHeight="40.0" prefWidth="220.0" promptText="--SELECT--">
                 <StackPane.margin>
-                    <Insets bottom="200.0" right="300.0"/>
+                    <Insets bottom="200.0" right="300.0" />
                 </StackPane.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </ComboBox>
-            <Label fx:id="currency2Output" text="OUTPUT" textAlignment="CENTER" visible="false">
-                <font>
-                    <Font size="20.0"/>
-                </font>
+            <Label id="amountLabel" prefHeight="23.0" prefWidth="31.0" text="TO:" textAlignment="CENTER">
                 <StackPane.margin>
-                    <Insets top="150.0"/>
-                </StackPane.margin>
-            </Label>
-            <Label prefHeight="17.0" prefWidth="45.0" text="TO:" textAlignment="CENTER">
-                <StackPane.margin>
-                    <Insets bottom="270.0" left="140.0"/>
+                    <Insets bottom="270.0" left="120.0" />
                 </StackPane.margin>
                 <font>
-                    <Font name="Arial Black" size="15.0"/>
+                    <Font name="Arial Black" size="15.0" />
                 </font>
                 <cursor>
-                    <Cursor fx:constant="TEXT"/>
+                    <Cursor fx:constant="TEXT" />
                 </cursor>
             </Label>
-            <ComboBox fx:id="currencyEntry2" editable="true" onShown="#fillBoxes" prefHeight="40.0" prefWidth="220.0"
-                      promptText="--SELECT--">
+            <ComboBox fx:id="currencyEntry2" editable="true" onMouseClicked="#fillBoxes" prefHeight="40.0" prefWidth="220.0" promptText="--SELECT--">
                 <StackPane.margin>
-                    <Insets bottom="200.0" left="300.0"/>
+                    <Insets bottom="200.0" left="300.0" />
                 </StackPane.margin>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </ComboBox>
-            <Button contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" prefHeight="35.0"
-                    prefWidth="104.0" text="CLEAR" textAlignment="CENTER">
+            <Button contentDisplay="CENTER" ellipsisString="" mnemonicParsing="false" onMouseClicked="#clearAllBoxes" prefHeight="35.0" prefWidth="104.0" text="CLEAR" textAlignment="CENTER">
                 <font>
-                    <Font size="14.0"/>
+                    <Font size="14.0" />
                 </font>
                 <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
                 <StackPane.margin>
-                    <Insets left="150.0" top="350.0"/>
+                    <Insets left="150.0" top="350.0" />
                 </StackPane.margin>
             </Button>
-            <Label text="AMOUNT:">
-                <font>
-                    <Font name="Arial Black" size="15.0"/>
-                </font>
+            <ImageView fx:id="switchArrows" fitHeight="72.0" fitWidth="42.0" onMouseClicked="#switchCurrencies" pickOnBounds="true" preserveRatio="true">
                 <StackPane.margin>
-                    <Insets left="160.0"/>
+                    <Insets bottom="200.0" />
                 </StackPane.margin>
+                <Image url="https://cdn-icons-png.flaticon.com/512/5436/5436381.png" />
                 <cursor>
-                    <Cursor fx:constant="TEXT"/>
-                </cursor>
-            </Label>
-            <ImageView fx:id="switchArrows" fitHeight="72.0" fitWidth="42.0" onMouseClicked="#switchCurries"
-                       pickOnBounds="true" preserveRatio="true">
-                <StackPane.margin>
-                    <Insets bottom="200.0"/>
-                </StackPane.margin>
-                <Image url="https://cdn-icons-png.flaticon.com/512/5436/5436381.png"/>
-                <cursor>
-                    <Cursor fx:constant="HAND"/>
+                    <Cursor fx:constant="HAND" />
                 </cursor>
             </ImageView>
+            <Label id="amountLabel" prefHeight="23.0" prefWidth="81.0" text="AMOUNT:" textAlignment="CENTER">
+                <font>
+                    <Font name="Arial Black" size="15.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="TEXT" />
+                </cursor>
+                <StackPane.margin>
+                    <Insets bottom="20.0" left="170.0" />
+                </StackPane.margin>
+            </Label>
+            <Label id="amountLabel" prefHeight="23.0" prefWidth="81.0" text="AMOUNT:" textAlignment="CENTER">
+                <font>
+                    <Font name="Arial Black" size="15.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="TEXT" />
+                </cursor>
+                <StackPane.margin>
+                    <Insets bottom="20.0" right="430.0" />
+                </StackPane.margin>
+            </Label>
+            <TextField fx:id="amount2TextArea" disable="true" editable="false" maxWidth="220.0" opacity="0.9" prefHeight="42.0" prefWidth="220.0" promptText="AMOUNT" text="0.94 (EUR)">
+                <font>
+                    <Font size="17.0" />
+                </font>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <StackPane.margin>
+                    <Insets left="300.0" top="50.0" />
+                </StackPane.margin>
+            </TextField>
+            <!--                </graphic>-->
+            <StackPane.margin>
+                <Insets right="300.0" top="50.0" />
+            </StackPane.margin>
             <cursor>
-                <Cursor fx:constant="DEFAULT"/>
+                <Cursor fx:constant="DEFAULT" />
             </cursor>
         </StackPane>
     </center>
     <top>
         <MenuBar>
             <Menu mnemonicParsing="false" text="File">
-                <MenuItem mnemonicParsing="false" text="Close"/>
+                <MenuItem mnemonicParsing="false" onAction="#MoneyTransferResourcesItemEH" text="Money Transfer Resources" />
+                <MenuItem mnemonicParsing="false" onAction="#fileMenuBoxCloseItem" text="Close" />
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
-                <MenuItem mnemonicParsing="false" text="Delete"/>
+                <MenuItem mnemonicParsing="false" onAction="#editMenuBoxClearEventHandler" text="Clear" />
+                <MenuItem fx:id="menuDarkAndLight" mnemonicParsing="false" onAction="#editMenuBoxDartAndLightEventHandler" text="Dark Theme" />
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" text="About"/>
+                <MenuItem mnemonicParsing="false" onAction="#helpMenuBoxEventHandler" text="About" />
             </Menu>
             <cursor>
-                <Cursor fx:constant="DEFAULT"/>
+                <Cursor fx:constant="DEFAULT" />
             </cursor>
         </MenuBar>
     </top>

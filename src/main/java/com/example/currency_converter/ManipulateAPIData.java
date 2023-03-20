@@ -7,14 +7,12 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
     private HashMap<String, Double> apiData;
 
     /**
-     * Get all the data and assign it to response
+     * @implNote Get all the data and assign it to response
      */
-    ManipulateAPIData() {
-        /*
-         * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
-         * @api: "https://cdn.moneyconvert.net/api/latest.json" ( API USED FOR THE PROGRAM) *
-         * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
-         */
+    public ManipulateAPIData() {
+        // * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
+        // * @api: "https://cdn.moneyconvert.net/api/latest.json" (API USED FOR THE PROGRAM) *
+        // * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *
 
         final String API_URL = "https://cdn.moneyconvert.net/api/latest.json";
         FetchCurrencyRatesAPI fetchAPI = new FetchCurrencyRatesAPI();
@@ -24,8 +22,8 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
     }
 
     /**
-     * Build the map that will have the currency as the key of the map and the value as the rate
-     * i.e. USD --> 1
+     * @implNote Build the map that will have the currency as the
+     * key of the map and the value as the rate i.e. USD --> 1
      */
     private void buildAPIDataMap() {
         // Trim the api response and only get the useful information
@@ -42,7 +40,10 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
         }
     }
 
-    // Useful for testing
+    /**
+     * @return apiData.size -> int
+     * @implNote Useful for testing
+     */
     public int apiDataMapSize() {
         return this.apiData.size();
     }
@@ -65,8 +66,8 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
     }
 
     /**
-     * @param currency passing the name will
-     * @return give the rate of the given currency name
+     * @param currency -> String
+     * @return currencies -> String
      */
     @Override
     public double getRateForGivenCurrency(String currency) {
@@ -89,11 +90,16 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
         return currenciesWithRates.toString();
     }
 
+    /**
+     * @return this function will convert amount of the give currency into one and
+     * another and return the calculation of it
+     */
     @Override
-    public double calculateRates(String currency1, String currency2) {
-        if (!this.apiData.containsKey(currency1) && (!this.apiData.containsKey(currency2)))
-            return -1;
-        return this.apiData.get(currency1) * this.apiData.get(currency2);
+    public double calculateRates(String amount, String currency1, String currency2) {
+
+        double rate1 = this.apiData.get(currency1.toUpperCase()),
+                rate2 = this.apiData.get(currency2.toUpperCase());
+        return -1.0;
     }
 
 }

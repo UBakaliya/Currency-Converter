@@ -6,7 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-
+/**
+ * This is the main class the runs the application.
+ */
 public class Main extends Application {
 
     @Override
@@ -15,9 +17,7 @@ public class Main extends Application {
         stage.setTitle("Currency Converter");
         Image icon = new Image("file:src/images/icon.png");
         stage.getIcons().add(icon);
-
-        Scene scene = new Scene(root.load());
-        stage.setScene(scene);
+        stage.setScene(new Scene(root.load()));
         stage.show();
     }
 

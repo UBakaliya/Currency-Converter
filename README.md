@@ -13,10 +13,10 @@
 
 To clone get the app you can clone:
 ```
-https://github.com/UBakaliya/Currency-Exchanger.git
+https://github.com/UBakaliya/Currency-Converter.git
 ```
 
 OR
 
-[Download](https://github.com/UBakaliya/Currency-Exchanger/archive/refs/heads/main.zip)
+[Download](https://github.com/UBakaliya/Currency-Converter/archive/refs/heads/main.zip)
 

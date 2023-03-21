@@ -46,9 +46,7 @@ public class CurrencyConverterController {
     public CurrencyConverterController() {
         apiDataContainer = new ManipulateAPIData();
         this.currencies = apiDataContainer.getAllCurrenciesNames();
-        double usd = this.apiDataContainer.getRateForGivenCurrency("USD");
-        double eur = this.apiDataContainer.getRateForGivenCurrency("EUR");
-        currenciesEntryAdded = false;
+        this.currenciesEntryAdded = false;
     }
 
     // Load the progress bar on the convert button clicked
@@ -57,9 +55,9 @@ public class CurrencyConverterController {
         Task<Void> task = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                for (int i = 0; i < 100; i++) {
+                for (int i = 0; i < 50; i++) {
                     Thread.sleep(10); // Simulate work being done
-                    updateProgress(i + 1, 100);
+                    updateProgress(i + 1, 50);
                 }
                 return null;
             }
@@ -71,6 +69,11 @@ public class CurrencyConverterController {
         new Thread(task).start();
         // Hide the progress indicator when the task is done
         task.setOnSucceeded(e -> this.progressIndicator.setVisible(false));
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
         return true;
     }
 
@@ -79,19 +82,17 @@ public class CurrencyConverterController {
                 && this.currencies.contains(this.currencyEntry2.getValue()));
     }
 
-    // Helper function to converse the currencies
-    private void convert() {
-
-    }
-
-    // Convert all the currency
+    // Convert the currency on the convert button clicked
     public void convertCurrency() {
         this.convertBtn.setOnAction(e -> {
             if (!this.checkValidCurrency()) {
                 return;
             }
-            convert();
-            this.loadProgressIndicator();
+            double conversion = this.apiDataContainer.calculateRates(this.amount1TextArea.getText(),
+                    this.currencyEntry1.getValue().toString(), this.currencyEntry2.getValue().toString());
+            if (this.loadProgressIndicator()) {
+                this.amount2TextArea.setText(Double.toString(conversion));
+            }
         });
     }
 
@@ -115,9 +116,8 @@ public class CurrencyConverterController {
         this.currencyEntry1.setValue(this.currencyEntry2.getValue());
         this.currencyEntry2.setValue(temp);
         // swap the two text filed
-        String textTemp = this.amount1TextArea.getText();
         this.amount1TextArea.setText(this.amount2TextArea.getText());
-        this.amount2TextArea.setText(textTemp);
+        this.amount2TextArea.setText("");
     }
 
     // Clear the boxes on the "clear" button clicked
@@ -216,9 +216,6 @@ public class CurrencyConverterController {
     }
 
     public void currencyAmountEntry(KeyEvent actionEvent) {
-        System.out.println(this.amount1TextArea.getText());
+
     }
 }
-
-
-

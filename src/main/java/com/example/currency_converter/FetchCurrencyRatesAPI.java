@@ -1,9 +1,3 @@
-/**
- * @author Uvaish Bakaliya
- * @apiNote This class the online getting hte data from the api.
- * @implNote If the data is not retrieve successfully then it will give error.
- * API Used: "https://cdn.moneyconvert.net/api/latest.json"
- */
 
 package com.example.currency_converter;
 
@@ -12,7 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
+/**
+ * @apiNote This class help use fetch the api data and return the string of the api responses.
+ */
 public class FetchCurrencyRatesAPI {
 
     // Given the api it will return the format the api is in:

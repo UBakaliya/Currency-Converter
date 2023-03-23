@@ -1,21 +1,12 @@
-/**
- * @apiNote This is the application layout filed where all the function is being build from the
- * "currency-converter-view.fxml" file.
- */
 package com.example.currency_converter;
-
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -23,6 +14,10 @@ import javafx.stage.Stage;
 import java.util.Objects;
 import java.util.SortedSet;
 
+/**
+ * @implNote This class is the application controller, which has the function that are getting used in
+ * the fxml file of the application.
+ */
 public class CurrencyConverterController {
 
     @FXML
@@ -39,6 +34,7 @@ public class CurrencyConverterController {
     public MenuItem menuDarkAndLight;
     @FXML
     public BorderPane borderPane;
+
     private boolean currenciesEntryAdded;
     private final ManipulateAPIData apiDataContainer;
     private final SortedSet<Object> currencies;
@@ -97,7 +93,7 @@ public class CurrencyConverterController {
     }
 
     // Fill the currency selector boxes
-    public void fillBoxes(Event event) {
+    public void fillBoxes() {
         if (this.currenciesEntryAdded)
             return;
         this.currencies.forEach(e -> {
@@ -110,7 +106,7 @@ public class CurrencyConverterController {
     }
 
     // Swap the value of the all the boxes on swap button clicked
-    public void switchCurrencies(MouseEvent mouseEvent) {
+    public void switchCurrencies() {
         // swap the currencies
         Object temp = this.currencyEntry1.getValue();
         this.currencyEntry1.setValue(this.currencyEntry2.getValue());
@@ -129,18 +125,18 @@ public class CurrencyConverterController {
     }
 
 
-    public void fileMenuBoxCloseItem(ActionEvent actionEvent) {
+    public void fileMenuBoxCloseItem() {
         Platform.exit();
     }
 
-    public void editMenuBoxClearEventHandler(ActionEvent actionEvent) {
+    public void editMenuBoxClearEventHandler() {
         this.clearAllBoxes();
     }
 
     /**
      * Load the about currency converter page on the menu bar about item click
      */
-    public void helpMenuBoxEventHandler(ActionEvent actionEvent) {
+    public void helpMenuBoxEventHandler() {
         Stage primaryStage = new Stage();
         ScrollPane root = new ScrollPane();
         Scene scene = new Scene(root, 550, 550);
@@ -190,11 +186,9 @@ public class CurrencyConverterController {
     }
 
     /**
-     * This function is a event handler for the switch between dark and light themes
-     *
-     * @param actionEvent Not Used
+     * This function is an event handler for the switch between dark and light themes
      */
-    public void editMenuBoxDartAndLightEventHandler(ActionEvent actionEvent) {
+    public void editMenuBoxDartAndLightEventHandler() {
         String cssFile = this.borderPane.getStylesheets().toString().
                 substring(113, this.borderPane.getStylesheets().toString().length() - 1);
         if (cssFile.equals("darkStyles.css")) {
@@ -210,12 +204,71 @@ public class CurrencyConverterController {
         }
     }
 
+    // On the menu click the resources of the money transfer stage will be displayed
+    public void MoneyTransferResourcesItemEH() {
 
-    public void MoneyTransferResourcesItemEH(ActionEvent actionEvent) {
 
+        Stage primaryStage = new Stage();
+        ScrollPane root = new ScrollPane();
+        Scene scene = new Scene(root, 550, 650);
+        Text text = new Text("""
+                 1) XE
+                       - Transfer directly from your bank account
+                       - 60+ Currencies
+                       - No fees, competitive exchange rates
+                       - Minimum transfer: none
+                       - Transfer time: min. 1-2 hours
+                       - Track live rates on the XE website and app
+                 *******************************************************\s
+                 2) Currencies Direct
+                       - Bank-beating exchange rates
+                       - No transfer fees
+                       - Minimum transfer: $200
+                       - Transfer time: same day
+                       - Transfer online, via app, or over the phone
+                 *******************************************************\s
+                 3) OFX
+                       - Great exchange rates and 24/7 support
+                       - No transfer fees
+                       - Minimum transfer: none
+                       - Transfer time: 1-2 days
+                 *******************************************************\s
+                 4) WorldRemit
+                       - Simple, low-cost money transfers
+                       - Low transaction fees
+                       - Minimum transfer: none
+                       - Instant or near-instant transfers \s
+                 *******************************************************\s
+                 5) CurrencyFair
+                       - 10 free transfers for new members
+                       - Low fees, competitive exchange rates
+                       - Minimum transfer: none
+                       - Transfer time: same day
+                 *******************************************************\s
+                 6) Remitly
+                       - Affordable transfers & 24/7 customer support
+                       - Top exchange rates, low fees
+                       - Minimum transfer: none
+                       - Transfer time: instant-5 business days
+                     
+                *********************************************************************************************************\s
+                                
+                * Top 3 Money Transfer Companies *\s
+                  Company	         Transfer Fee   Explore                \s
+                  XE	             None	         www.xe.com               \s
+                  WorldRemit         Low fees	     www.worldremit.com       \s
+                  Currencies Direct  None	         www.currenciesdirect.com \s
+                  
+                  
+                ******************************      END OF THE PAGE      ******************************\s""");
+        text.wrappingWidthProperty().bind(scene.widthProperty());
+        root.setFitToWidth(true);
+        root.setContent(text);
+        primaryStage.setTitle("Currency Exchange Resources");
+        primaryStage.setResizable(false);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
-    public void currencyAmountEntry(KeyEvent actionEvent) {
-
-    }
 }
+

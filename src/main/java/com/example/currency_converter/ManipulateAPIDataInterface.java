@@ -8,19 +8,18 @@ public interface ManipulateAPIDataInterface {
     // This will give use the most recent date for the person
     // using the app, the api date is bit off, thus we will
     // get date base on the persons' location.
-    public String getCurrentDate();
+    String getCurrentDate();
 
     // It will return all the currencies names are in the api
-    public SortedSet<Object> getAllCurrenciesNames();
+    SortedSet<Object> getAllCurrenciesNames();
 
     // This will return the rate of the given country currency
     // NOTE: This will only the rate on the conversions. i.e. 3.3%
-    public double getRateForGivenCurrency(String currency);
+    double getRateForGivenCurrency(String currency);
 
     // This will return 'all' the currencies with their rates
-    public String getCurrenciesNamesWithRates();
+    String getCurrenciesNamesWithRates();
 
     // This function will return the conversion of the currencies
-    public double calculateRates(String amount, String currency1, String currency2);
-
+    double calculateRates(String amount, String currency1, String currency2);
 }

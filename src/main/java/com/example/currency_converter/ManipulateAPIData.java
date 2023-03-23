@@ -1,12 +1,14 @@
 package com.example.currency_converter;
 
-
 import java.util.*;
 
+/**
+ * @implNote This class hele use manumitted the api data and all the usefully
+ * functions for converting the currencies.
+ */
 public class ManipulateAPIData implements ManipulateAPIDataInterface {
     private String currenciesWithRatesResp, countriesWithCurrencyCodesResp;
     private HashMap<String, Double> apiData;
-    private HashMap<String, String> countriesWithCurrency;
 
     /**
      * @implNote Get all the data and assign it to response
@@ -17,11 +19,10 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
         // * @Countries with currency codes (API): "https://openexchangerates.org/api/currencies.json" *
         // * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * *  * * * *  * * * *
 
-        final String API_URL_CURRENCY_WITH_RATES = "https://cdn.moneyconvert.net/api/latest.json";
-        final String API_URL_COUNTRIES_WITH_CURRENCY_CODES = "https://openexchangerates.org/api/currencies.json";
+        final String API_URL_CURRENCY_WITH_RATES = "https://cdn.moneyconvert.net/api/latest.json"; // IN USED
+        final String API_URL_COUNTRIES_WITH_CURRENCY_CODES = "https://openexchangerates.org/api/currencies.json"; // NOT USED
         FetchCurrencyRatesAPI fetchAPI = new FetchCurrencyRatesAPI();
         this.currenciesWithRatesResp = fetchAPI.fetchAPI(API_URL_CURRENCY_WITH_RATES); // Get the api data
-//        this.countriesWithCurrencyCodesResp = fetchAPI.fetchAPI(API_URL_COUNTRIES_WITH_CURRENCY_CODES);
 
         // Build the map cleaning the response
         this.buildAPIDataMap();
@@ -46,35 +47,7 @@ public class ManipulateAPIData implements ManipulateAPIDataInterface {
             double rate = Double.parseDouble(i.substring(i.indexOf(":") + 1));
             this.apiData.put(currency, rate);
         }
-//        this.countriesWithCurrencyCodesResp = this.countriesWithCurrencyCodesResp.substring(
-//                1, this.countriesWithCurrencyCodesResp.length() - 1);
-//        ArrayList<String> splitCountriesWithCurrencyData = new ArrayList<>(Arrays.asList(
-//                this.countriesWithCurrencyCodesResp.split(",")));
-//        for (final String i : splitCountriesWithCurrencyData) {
-//            String country = i.substring(i.indexOf(":") + 1).replaceAll("\"", "");
-//            String currency = i.substring(0, i.indexOf(":")).replaceAll("\\s", "").replaceAll("\"", "");
-//        }
-    }
 
-
-    /**
-     * This function will return all the countries names
-     *
-     * @return countries --> Set<String>
-     */
-    public Set<String> getCountries() {
-        Set<String> temp = new HashSet<>();
-        return temp;
-    }
-
-    /**
-     * Get courency base on give country
-     *
-     * @param country --> String
-     * @return currency --> String
-     */
-    public String getCurrency(String country) {
-        return "";
     }
 
     /**

@@ -7,24 +7,22 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * @implNote This class will help us get the user currency search terms from the
+ * search currency combo boxes
+ */
 public class AutoCompleteComboBoxListener implements EventHandler<KeyEvent> {
 
-    private final ComboBox comboBox;
+    private final ComboBox<Object> comboBox;
     private final ObservableList<Object> data;
     private boolean moveCaretToPos = false;
     private int caretPos;
 
     public AutoCompleteComboBoxListener(final ComboBox<Object> comboBox) {
         this.comboBox = comboBox;
-        StringBuilder sb = new StringBuilder();
         data = comboBox.getItems();
         this.comboBox.setEditable(true);
-        this.comboBox.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent t) {
-                comboBox.hide();
-            }
-        });
+        this.comboBox.setOnKeyPressed(t -> comboBox.hide());
         this.comboBox.setOnKeyReleased(AutoCompleteComboBoxListener.this);
     }
 
@@ -55,7 +53,7 @@ public class AutoCompleteComboBoxListener implements EventHandler<KeyEvent> {
             return;
         }
 
-        ObservableList list = FXCollections.observableArrayList();
+        ObservableList<Object> list = FXCollections.observableArrayList();
         for (Object datum : data) {
             if (datum.toString().toLowerCase().startsWith(
                     AutoCompleteComboBoxListener.this.comboBox
@@ -84,5 +82,4 @@ public class AutoCompleteComboBoxListener implements EventHandler<KeyEvent> {
         }
         moveCaretToPos = false;
     }
-
 }

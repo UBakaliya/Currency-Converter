@@ -36,8 +36,7 @@
                 </cursor>
             </Button>
             <TextField fx:id="amount1TextArea" maxWidth="220.0" opacity="0.9"
-                       prefHeight="42.0" prefWidth="220.0" promptText="AMOUNT" text="1"
-                       onKeyTyped="#currencyAmountEntry">
+                       prefHeight="42.0" prefWidth="220.0" promptText="AMOUNT" text="1">
                 <font>
                     <Font size="17.0"/>
                 </font>
